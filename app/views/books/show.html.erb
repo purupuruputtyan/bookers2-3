@@ -14,30 +14,45 @@
       <table class="table">
         <tbody>
           <tr>
+
             <td>
               <%= link_to user_path(@user.id) do %>
                 <%= image_tag @book.user.get_profile_image(100,100) %><br>
                 <%= @book.user.name %>
               <% end %>
             </td>
+
             <td>
               <%= link_to book_path(@book.id) do %>
                 <%= @book.title %>
               <% end %>
             </td>
+
             <td><%= @book.body %></td>
-            <td><%= render 'favorites/btn', book: @book %></td>
+
+            <td class="favorite-btn<%= @book.id %>">
+              <%= render 'favorites/btn', book: @book %>
+            </td>
+
+            <td class="comments-count">
+              <%= render 'book_comments/count', book: @book %>
+            </td>
+
             <td>
             <% if @book.user == current_user %>
               <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success" %></td>
               <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？",  class: "btn btn-danger" %></td>
             <% end %>
             </td>
+
           </tr>
         </tbody>
       </table>
 
-      <%= render 'book_comments/index', book: @book %>
+      <div class="comments-area">
+        <%= render 'book_comments/index', book: @book %>
+      </div>
+
       <%= render 'book_comments/form', book: @book, book_comment: @book_comment %>
 
     </div>
