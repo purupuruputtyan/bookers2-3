@@ -17,14 +17,13 @@ require("jquery")
 //= require jquery
 //= require jquery_ujs
 
-//import Raty from "raty.js"
-//window.raty = function(elem,opt) {
-//  let raty =  new Raty(elem,opt)
-//  raty.init();
-//  return raty;
-//}
-//= require jquery.raty.js
-window.$ = window.jQuery = require('jquery'); 
+import Raty from "raty.js"
+window.raty = function(elem,opt){
+    let raty =  new Raty(elem,opt)
+    raty.init();
+    return raty;
+}
+
 require('packs/raty')
 
 Rails.start()
