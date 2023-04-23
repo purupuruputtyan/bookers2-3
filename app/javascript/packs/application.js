@@ -17,14 +17,14 @@ require("jquery")
 //= require jquery
 //= require jquery_ujs
 
-import Raty from "raty.js"
-window.raty = function(elem,opt){
-    let raty =  new Raty(elem,opt)
-    raty.init();
-    return raty;
-}
+//import Raty from "raty.js"
+//window.raty = function(elem,opt){
+//    let raty =  new Raty(elem,opt)
+//    raty.init();
+//    return raty;
+//}
 
-require('packs/raty')
+//require('packs/raty')
 
 Rails.start()
 Turbolinks.start()

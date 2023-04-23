@@ -47,7 +47,7 @@ class BooksController < ApplicationController
 private
 
   def book_params
-    params.require(:book).permit(:title, :body, :star)
+    params.require(:book).permit(:title, :body)
   end
 
   def is_matching_login_user

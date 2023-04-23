@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
 
   def index
-    @users = User.all
+    @users = User.where(status: '0')
     @book = Book.new
   end
 
@@ -25,11 +25,11 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-
+  
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image, :introduction)
+    params.require(:user).permit(:name, :profile_image, :introduction, :status)
   end
 
   def is_matching_login_user

@@ -1,4 +1,10 @@
 <%= image_tag user.get_profile_image(100,100) %>
+  <% if user.status_i18n == "公開" %>
+    <div class="text-success"><%= "公開" %></div>
+  <% else %>
+    <div class="text-muted"><%= "非公開" %></div>
+  <% end %>
+
 <table class="table">
   <tbody>
     <tr></tr>

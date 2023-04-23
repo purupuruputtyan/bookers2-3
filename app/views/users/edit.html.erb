@@ -16,6 +16,14 @@
         <label for="user_introduction">Introduction</label>
         <div><%= f.text_area :introduction, class: "form-control" %></div>
       </div>
+
+      <div>
+        <%= f.radio_button :status, User.statuses.key(0) %>
+        <%= f.label :status, User.statuses_i18n[:public] %>
+        <%= f.radio_button :status, User.statuses.key(1) %>
+        <%= f.label :status, User.statuses_i18n[:private] %>
+      </div>
+
       <div class="form-group">
         <%= f.submit 'Update User', class: "btn btn-secondary" %>
       </div>
