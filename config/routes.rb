@@ -11,9 +11,7 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
-      patch 'released' => 'users#release'
-      patch 'nonreleased' => 'users#nonrelease'
-  end
+    end
 
   get "search" => "searches#search"
 

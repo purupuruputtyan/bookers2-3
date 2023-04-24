@@ -32,19 +32,6 @@ class UsersController < ApplicationController
     end
   end
 
-  #def release
-    #user =  User.find(params[:user_id])
-    #user.released! unless user.released?
-    #redirect_to request.referer, notice: 'このユーザーを公開しました'
-  #end
-
-  #def nonrelease
-    #user =  User.find(params[:user_id])
-    #user.nonreleased! unless user.nonreleased?
-    #redirect_to request.referer, notice: 'このユーザーを非公開にしました'
-  #end
-
-
   private
 
   def user_params

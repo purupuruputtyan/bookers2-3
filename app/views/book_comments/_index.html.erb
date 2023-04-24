@@ -17,22 +17,10 @@
       </td>
 
       <td><%= book_comment.comment %></td>
-      <td>
-        <script>
-    　　　　$('#star').empty();
-          $('#star').raty({
-            size     : 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-         　 　　　scoreName: 'book[star]',
-            half: false,
-          });
-        </script>
-      </td>
 
       <td>
         <% if book_comment.user == current_user %>
-          <%= link_to 'Destroy', book_book_comment_path(book, book_comment), method: :delete, remote: true, class: "btn btn-danger pull-right" %>
+          <%= link_to 'Destroy', book_book_comment_path(book, book_comment), method: :delete, remote:true, class: "btn btn-danger pull-right" %>
         <% end %>
       </td>
 
