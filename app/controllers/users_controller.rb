@@ -2,12 +2,18 @@ class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
 
   def index
-    @users = User.where(status: '0')
+    @users = User.all
     @book = Book.new
   end
 
   def show
     @user = User.find(params[:id])
+    #if (@user.status == '0') && (@user != current_user)
+      #respond_to do |format|
+        #format.html { redirect_to users_path, notice: 'このユーザーは非公開です' }
+      #redirect_to users_path, notice: 'このユーザーは非公開です'
+      #end
+    #end
     @book = Book.new
     @books = @user.books
   end
@@ -25,7 +31,20 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-  
+
+  #def release
+    #user =  User.find(params[:user_id])
+    #user.released! unless user.released?
+    #redirect_to request.referer, notice: 'このユーザーを公開しました'
+  #end
+
+  #def nonrelease
+    #user =  User.find(params[:user_id])
+    #user.nonreleased! unless user.nonreleased?
+    #redirect_to request.referer, notice: 'このユーザーを非公開にしました'
+  #end
+
+
   private
 
   def user_params
