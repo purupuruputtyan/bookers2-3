@@ -16,9 +16,14 @@
           <tr>
 
             <td>
-              <%= link_to user_path(@user.id) do %>
+              <% if (@user.status_i18n == '公開') || (@user == current_user) %>
+                <%= link_to user_path(@user.id) do %>
+                  <%= image_tag @book.user.get_profile_image(100,100) %><br>
+                  <%= @book.user.name %>
+                <% end %>
+              <% else %>
                 <%= image_tag @book.user.get_profile_image(100,100) %><br>
-                <%= @book.user.name %>
+                <%= @book.user.name %>&emsp;<i class="fas fa-lock"></i>
               <% end %>
             </td>
 
