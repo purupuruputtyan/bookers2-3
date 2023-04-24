@@ -43,6 +43,8 @@
               <%= render 'book_comments/count', book: @book %>
             </td>
 
+            <td><%= render "books/static_rate", book: @book %></td>
+
             <td>
             <% if @book.user == current_user %>
               <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success" %></td>
