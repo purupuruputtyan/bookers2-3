@@ -22,6 +22,10 @@ class ApplicationController < ActionController::Base
     if @user.name == "guestuser"
       redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
-  end  
+  end
+  
+  def set_time_zone
+    Time.zone = current_user.time_zone
+  end
   
 end

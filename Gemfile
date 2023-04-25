@@ -61,3 +61,5 @@ gem 'net-smtp'
 gem 'jquery-rails'
 
 gem "enum_help"
+
+gem "simple_calendar", "~> 2.4"

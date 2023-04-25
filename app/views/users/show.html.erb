@@ -12,4 +12,16 @@
       <%= render 'books/index', books: @books %>
     </div>
   </div>
+
+  <%= month_calendar events: @books do |date, books| %>
+
+    <%= date.day %>
+
+    <% books.each do |book| %>
+      <div class="text-center"><%= image_tag book.user.get_profile_image(50,50) %></div>
+      <div class="text-center"><%= link_to book.title, book_path(book.id) %></div>
+    <% end %>
+
+<% end %>
+
 </div>
