@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :books, dependent: :destroy
   has_one_attached :profile_image
-  
+
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
 
@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
   validates :name, uniqueness: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50 }
-  
+
   enum status: { public: 0, private: 1 }, _prefix: true
 
   def get_profile_image(width, height)
@@ -58,6 +58,13 @@ class User < ApplicationRecord
       User.where('name LIKE ?', '%' + content)
     else
       User.where('name LIKE ?', '%' + content + '%')
+    end
+  end
+
+  def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
     end
   end
 end
