@@ -4,19 +4,29 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  #bookモデルとのアソシエーション
   has_many :books, dependent: :destroy
   has_one_attached :profile_image
 
+  #favoriteモデルとのアソシエーション
   has_many :favorites, dependent: :destroy
   has_many :favorite_books, through: :favorites, source: :book
   
+  #book_commentモデルとのアソシエーション
   has_many :book_comments, dependent: :destroy
 
+  #フォロー機能アソシエーション
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :follower#自分をフォローしている人
 
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed#自分がフォローしてる人
+  
+  #DM機能アソシエーション
+  has_many :user_rooms
+  has_many :rooms, through: :user_rooms
+  has_many :chats
+  
 
   validates :name, uniqueness: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50 }
