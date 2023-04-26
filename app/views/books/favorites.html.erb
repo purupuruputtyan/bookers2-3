@@ -1,0 +1,19 @@
+<div class="container px-5 px-sm-0">
+  <div>
+    <%= flash[:notice] %>
+  </div>
+  <%= render 'layouts/error', obj: @book %>
+  <div class="row">
+    <div class="col-md-3">
+      <h2>User info</h2>
+      <%= render 'users/info', user: current_user %>
+      <h2 class="mt-3">New book</h2>
+      <%= render 'form', book: @book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Favorite Books</h2>
+      <%= render 'index', books: @favorite_books %>
+    </div>
+  </div>
+
+</div>

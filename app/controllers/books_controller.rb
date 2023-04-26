@@ -55,6 +55,11 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+  def favorites
+    @favorite_books = current_user.favorite_books.includes(:user).order(created_at: :desc)
+    @book = Book.new
+  end
+
 private
 
   def book_params
