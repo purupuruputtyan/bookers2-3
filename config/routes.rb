@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   
   resources :chats, only: [:show, :create, :destroy]
   
+  get 'my_post' => 'books#my_post'
   resources :books, only: [:create, :index, :show, :edit, :update, :destroy] do
     get :favorites, on: :collection
     resource :favorites, only: [:create, :destroy]

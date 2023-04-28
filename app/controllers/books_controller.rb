@@ -9,12 +9,14 @@ class BooksController < ApplicationController
       flash[:notice] = "You have created book successfully"
       redirect_to book_path(@book.id)
     else
+      #@users = User.release
       @books = Book.all
       render :index
     end
   end
 
   def index
+    #@users = User.release
     if params[:latest]
       @books = Book.latest
     elsif params[:old]
@@ -24,7 +26,6 @@ class BooksController < ApplicationController
     else
       @books = Book.all
     end
-
     @book = Book.new
   end
 
@@ -57,6 +58,19 @@ class BooksController < ApplicationController
 
   def favorites
     @favorite_books = current_user.favorite_books.includes(:user).order(created_at: :desc)
+    @book = Book.new
+  end
+
+  def my_post
+    if params[:latest]
+      @books = current_user.books.latest
+    elsif params[:old]
+      @books = current_user.books.old
+    elsif params[:star_count]
+      @books = current_user.books.star_count
+    else
+      @books = current_user.books
+    end
     @book = Book.new
   end
 

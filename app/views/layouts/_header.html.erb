@@ -10,43 +10,48 @@
         <% if user_signed_in? %>
           <li>
             <%= link_to user_path(current_user.id), class: "nav-link text-light" do %>
-              <i class="fas fa-home"></i>Home
+              <i class="fas fa-home"></i>&nbsp;Home
+            <% end %>
+          </li>
+          <li>
+            <%= link_to my_post_path, class: "nav-link text-light" do %>
+              <i class="fas fa-smile"></i>&nbsp;My posts
             <% end %>
           </li>
           <li>
             <%= link_to users_path, class: "nav-link text-light" do %>
-              <i class="fas fa-users"></i>Users
+              <i class="fas fa-users"></i>&nbsp;Users
             <% end %>
           </li>
           <li>
             <%= link_to books_path, class: "nav-link text-light" do %>
-              <i class="fas fa-book-open"></i>Books
+              <i class="fas fa-book-open"></i>&nbsp;Books
             <% end %>
           </li>
           <li>
             <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
-              <i class="fas fa-sign-out-alt"></i>Log out
+              <i class="fas fa-sign-out-alt"></i>&nbsp;Log out
             <% end %>
           </li>
         <% else %>
           <li>
             <%= link_to root_path, class: "nav-link text-light" do %>
-              <i class="fas fa-home"></i>Home
+              <i class="fas fa-home"></i>&nbsp;Home
             <% end %>
           </li>
           <li>
             <%= link_to about_path, class: "nav-link text-light" do %>
-              <i class="fas fa-link"></i>About
+              <i class="fas fa-link"></i>&nbsp;About
             <% end %>
           </li>
           <li>
             <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
-              <i class="fas fa-user-plus"></i>Sign up
+              <i class="fas fa-user-plus"></i>&nbsp;Sign up
             <% end %>
           </li>
           <li>
             <%= link_to new_user_session_path, class: "nav-link text-light" do %>
-              <i class="fas fa-sign-in-alt"></i>Log in
+              <i class="fas fa-sign-in-alt"></i>&nbsp;Log in
             <% end %>
           </li>
         <% end %>

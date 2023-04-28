@@ -14,12 +14,7 @@
         <td>フォロー数: <%= user.followings.count %></td>
         <td>フォロワー数: <%= user.followers.count %></td>
         <td><%= render 'relationships/btn', user: user %></td>
-
-        <% if user.status_i18n == "非公開" %>
-          <td>非公開</td>
-        <% else %>
-          <td><%= link_to 'Show', user_path(user.id) %></td>
-        <% end %>
+        <td><%= link_to 'Show', user_path(user.id) %></td>
       </tr>
     <% end %>
   </tbody>

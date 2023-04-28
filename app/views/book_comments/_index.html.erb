@@ -2,29 +2,26 @@
   <tbody>
 
     <% book.book_comments.each do |book_comment| %>
-    <tr>
-
-      <td>
-        <% if (book_comment.user.status_i18n == '公開') || (book_comment.user == current_user) %>
-          <%= link_to user_path(book_comment.user.id) do %>
-            <%= image_tag book_comment.user.get_profile_image(50,50) %><br>
-            <%= book_comment.user.name %>
-          <% end %>
-        <% else %>
-          <%= image_tag book_comment.user.get_profile_image(50,50) %><br>
-          <%= book_comment.user.name %>&emsp;<i class="fas fa-lock"></i>
-        <% end %>
-      </td>
-
-      <td><%= book_comment.comment %></td>
-
-      <td>
-        <% if book_comment.user == current_user %>
-          <%= link_to 'Destroy', book_book_comment_path(book, book_comment), method: :delete, remote:true, class: "btn btn-danger pull-right" %>
-        <% end %>
-      </td>
-
-    </tr>
+      <% if book_comment.user.status = true %>
+        <tr>
+    
+          <td>
+            <%= link_to user_path(book_comment.user.id) do %>
+              <%= image_tag book_comment.user.get_profile_image(50,50) %><br>
+              <%= book_comment.user.name %>
+            <% end %>
+          </td>
+    
+          <td><%= book_comment.comment %></td>
+    
+          <td>
+            <% if book_comment.user == current_user %>
+              <%= link_to 'Destroy', book_book_comment_path(book, book_comment), method: :delete, remote:true, class: "btn btn-danger pull-right" %>
+            <% end %>
+          </td>
+    
+        </tr>
+      <% end %>
     <% end %>
 
   </tbody>

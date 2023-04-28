@@ -31,7 +31,9 @@ class User < ApplicationRecord
   validates :name, uniqueness: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50 }
 
-  enum status: { public: 0, private: 1 }, _prefix: true
+  # 公開・非公開機能
+  scope :release, -> {where(status: true)}
+  scope :nonrelease, -> {where(status: false)}
 
   def get_profile_image(width, height)
     unless profile_image.attached?
