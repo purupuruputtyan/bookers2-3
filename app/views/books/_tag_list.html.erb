@@ -1,0 +1,6 @@
+<% tags.each do |tag| %>
+  <span>
+    <%= link_to tag.name, search_path(content: tag.name, model: "tag", method: "perfect") %>
+    (<%= tag.books.count %>)
+  </span>
+<% end %>

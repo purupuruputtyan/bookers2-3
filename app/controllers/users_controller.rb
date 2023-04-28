@@ -3,18 +3,13 @@ class UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
 
   def index
+    
     @users = User.release
     @book = Book.new
   end
 
   def show
     @user = User.find(params[:id])
-    #if (@user.status == '0') && (@user != current_user)
-      #respond_to do |format|
-        #format.html { redirect_to users_path, notice: 'このユーザーは非公開です' }
-      #redirect_to users_path, notice: 'このユーザーは非公開です'
-      #end
-    #end
     @book = Book.new
     @books = @user.books
   end

@@ -9,14 +9,14 @@ class BooksController < ApplicationController
       flash[:notice] = "You have created book successfully"
       redirect_to book_path(@book.id)
     else
-      #@users = User.release
       @books = Book.all
-      render :index
+      render :indexs
     end
   end
 
   def index
-    #@users = User.release
+    #@tags = Tag.all
+    @tags = Tag.find(BookTag.group(:tag_id).order('count(book_id) desc').limit(10).pluck(:tag_id))
     if params[:latest]
       @books = Book.latest
     elsif params[:old]
@@ -34,6 +34,7 @@ class BooksController < ApplicationController
     @book_new = Book.new
     @user = @book.user
     @book_comment = BookComment.new
+    @book_tags = @book.tags
   end
 
   def edit
