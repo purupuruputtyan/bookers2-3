@@ -63,3 +63,7 @@ gem 'jquery-rails'
 gem "enum_help"
 
 gem "simple_calendar", "~> 2.4"
+
+gem 'kaminari','~> 1.2.1'
+
+gem 'dotenv-rails'

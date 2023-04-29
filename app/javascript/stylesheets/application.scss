@@ -49,7 +49,7 @@
   }
 
   .day {
-    height: 80px;
+    height: 110px;
   }
 
   .today {
@@ -89,4 +89,30 @@
 
 .fs10 {
   font-size: 10px;
+}
+
+.tag_ul {
+  list-style: none;
+}
+
+.tag_li {
+  height: 20px;
+  line-height: 20px;
+  border-radius: 10px;
+  margin: 0 5px 5px 0;
+  display: inline-block;
+  text-align: -webkit-match-parent;
+}
+
+.taglist {
+  height: 24px;
+  line-height: 24px;
+  padding: 0 13px;
+  border: 1px solid #164e78;
+  border-radius: 12px;
+  display: inline-block;
+  color: #135587;
+  transition: all .2s;
+  font-size: 12px;
+  text-decoration: none;
 }

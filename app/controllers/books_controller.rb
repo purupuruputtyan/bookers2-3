@@ -16,7 +16,7 @@ class BooksController < ApplicationController
 
   def index
     #@tags = Tag.all
-    @tags = Tag.find(BookTag.group(:tag_id).order('count(book_id) desc').limit(10).pluck(:tag_id))
+    @tags = Tag.find(BookTag.group(:tag_id).order('count(book_id) desc').limit(20).pluck(:tag_id))
     if params[:latest]
       @books = Book.latest
     elsif params[:old]
