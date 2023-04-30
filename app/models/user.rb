@@ -26,7 +26,6 @@ class User < ApplicationRecord
   has_many :user_rooms
   has_many :rooms, through: :user_rooms
   has_many :chats
-  
 
   validates :name, uniqueness: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50 }
