@@ -1,12 +1,19 @@
 <% if @model == 'user' %>
 
   <h3>Users search for "<%= @content %>"</h3>
-  <%= render 'users/index', users: @records %>
-
+  <% if @records.nil? %>
+    <%= render 'users/index', users: @records %>
+  <% else %>
+    検索結果がありません。
+  <% end %>
 <% elsif @model == 'book' %>
 
   <h3>Books search for "<%= @content %>"</h3>
-  <%= render 'books/index', books: @records %>
+  <% if @records.nil? %>
+    <%= render 'books/index', books: @records %>
+  <% else %>
+    検索結果がありません。
+  <% end %>
   
 <% elsif @model == 'tag' %>
   

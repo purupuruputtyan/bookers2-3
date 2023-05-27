@@ -43,7 +43,7 @@ class User < ApplicationRecord
   end
 
   #フォローをするための処理
-  def follow(user)#このユーザーはコントローラーで.findしたユーザー
+  def follow(user)#このユーザーはコントローラーで定義したユーザー
     relationships.create(followed_id: user.id)
     #コントローラーでレシーバをcurrent_userにしているのでカレントユーザのfollowed_idに保存しているということになる
     #Relationship.new(follower_id: current_user.id, followed_id: user.id)でもいける

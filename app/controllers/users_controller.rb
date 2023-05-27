@@ -3,8 +3,13 @@ class UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
 
   def index
-    @users = User.release
-    @book = Book.new
+     @book = Book.new
+    if params[:search]
+      @users = User.where(name: params[:search]).release
+    else
+      @users = User.release
+     
+    end
   end
 
   def show
